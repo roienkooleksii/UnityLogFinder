@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Reflection;
 [assembly: AssemblyTitle("UnityLogFinder")]
-[assembly: AssemblyVersion("1.0.0.0")]
+[assembly: AssemblyVersion("1.0.1.0")]
 namespace UnityLogFinder {
  static class Program {
   [STAThread] static void Main() {Application.EnableVisualStyles();Application.SetCompatibleTextRenderingDefault(false);Application.Run(new MainForm());}
  }
  public class MainForm:Form {
-  readonly CheckBox preferred=new CheckBox{Text="Only Alexey Roenko and Roenko Games",Checked=true,AutoSize=true,Margin=new Padding(0,8,16,0)};
+  readonly CheckBox preferred=new CheckBox{Text="Only Roenko Games",Checked=true,AutoSize=true,Margin=new Padding(0,8,16,0)};
   readonly TextBox search=new TextBox{Width=180};
   readonly Button refresh=new Button{Text="Refresh",AutoSize=true};
   readonly DataGridView grid=new DataGridView{Dock=DockStyle.Fill,ReadOnly=true,AllowUserToAddRows=false,AllowUserToDeleteRows=false,AutoGenerateColumns=false,SelectionMode=DataGridViewSelectionMode.FullRowSelect,MultiSelect=false,RowHeadersVisible=false,BackgroundColor=Color.White,BorderStyle=BorderStyle.None,AutoSizeColumnsMode=DataGridViewAutoSizeColumnsMode.Fill};
@@ -24,7 +24,7 @@ namespace UnityLogFinder {
   readonly string root=System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),"AppData","LocalLow");
   List<LogEntry> logs=new List<LogEntry>();int skipped;bool busy;
   public MainForm() {
-   Text="UnityLogFinder";Size=new Size(1100,640);MinimumSize=new Size(900,450);StartPosition=FormStartPosition.CenterScreen;Font=new Font("Segoe UI",10);BackColor=Color.White;AutoScaleMode=AutoScaleMode.Dpi;
+   Text="UnityLogFinder v"+Assembly.GetExecutingAssembly().GetName().Version.ToString(3);Icon=Icon.ExtractAssociatedIcon(Application.ExecutablePath);Size=new Size(1100,640);MinimumSize=new Size(900,450);StartPosition=FormStartPosition.CenterScreen;Font=new Font("Segoe UI",10);BackColor=Color.White;AutoScaleMode=AutoScaleMode.Dpi;
    var layout=new TableLayoutPanel{Dock=DockStyle.Fill,Padding=new Padding(24),ColumnCount=1,RowCount=7};
    foreach(int height in new[]{48,32,48})layout.RowStyles.Add(new RowStyle(SizeType.Absolute,height));
    layout.RowStyles.Add(new RowStyle(SizeType.Percent,100));foreach(int height in new[]{36,46,40})layout.RowStyles.Add(new RowStyle(SizeType.Absolute,height));
@@ -49,3 +49,5 @@ namespace UnityLogFinder {
   void UpdateSelection(){var item=Selected;path.Text=item==null?root:item.Path;foreach(var button in actions)button.Enabled=item!=null;}
  }
 }
+
+

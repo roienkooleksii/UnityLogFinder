@@ -33,4 +33,10 @@ The build uses the .NET Framework C# compiler included with Windows. No NuGet pa
 
 ## Українською
 
-Запустіть `UnityLogFinder.exe`. Галочка **Only Alexey Roenko and Roenko Games** показує логи ігор обох розробників. Зніміть її, щоб бачити інших розробників. **Open log** відкриває файл, **Open folder** показує його в Провіднику, **Copy log path** копіює шлях, **Save log as...** зберігає копію. **Refresh** оновлює список. Програма нічого не надсилає автоматично.
+Запустіть `UnityLogFinder.exe`. Галочка **Only Roenko Games** показує логи ігор обох розробників. Зніміть її, щоб бачити інших розробників. **Open log** відкриває файл, **Open folder** показує його в Провіднику, **Copy log path** копіює шлях, **Save log as...** зберігає копію. **Refresh** оновлює список. Програма нічого не надсилає автоматично.
+
+
+## Versioning
+
+Every published application change must increment the version. Update AssemblyVersion in Program.cs before building; the window title reads this version automatically. Publish a matching GitHub release tag. Small fixes and visual changes increment the patch number (for example, 1.0.0 to 1.0.1).
+
